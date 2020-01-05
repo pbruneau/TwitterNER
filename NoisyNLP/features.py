@@ -80,7 +80,7 @@ class DictionaryFeatures(object):
             self.dictionaries.append(d)
             if d == '.svn':
                 continue
-            for line in open(dictDir + "/" + d):
+            for line in open(dictDir + "/" + d, encoding='utf-8'):
                 word = line.rstrip('\n')
                 word = word.strip(' ').lower()
                 word = WORD_SPLITTER.sub(" ", word)
@@ -263,7 +263,7 @@ class ClusterFeatures(object):
     
     def _read_brown_clusters(self):
         cluster_vocab=dict()
-        with open(self.cluster_file_path) as fp:
+        with open(self.cluster_file_path, encoding='utf-8') as fp:
             for line in fp:
                 cid, word, counts = line.strip().split("\t")
                 cluster_vocab[word] = cid
@@ -271,7 +271,7 @@ class ClusterFeatures(object):
     
     def _read_clark_clusters(self):
         cluster_vocab=dict()
-        with open(self.cluster_file_path) as fp:
+        with open(self.cluster_file_path, encoding='utf-8') as fp:
             for line in fp:
                 try:
                     word, cid, prob = line.strip().split(" ")
@@ -597,8 +597,4 @@ def sent2features(sent, extra_features=None, **kwargs):
 
 def sent2labels(sent, lbl_id=1):
     return [k[lbl_id] for k in sent]
-
-
-
-
 
