@@ -75,7 +75,7 @@ class DictionaryFeatures(object):
         self.word2hashtagdictionaries = {}
         self.dictionaries = []
         i = 0
-        lst = os.listDir()
+        lst = os.listdir(dictDir)
         lst.sort()
         for d in lst:
             print("read dict %s"%d, file=sys.stderr)
